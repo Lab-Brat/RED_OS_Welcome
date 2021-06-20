@@ -55,18 +55,20 @@ class MainWindow:
 
         self.ui.click_info.setStyleSheet("background:#C4C4C4;border:solid;")
 
-        #self.ui.page_account.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
-        #self.ui.page_info.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
-        #self.ui.page_conf.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
-        #self.ui.page_domain.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
-        #self.ui.page_repo.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
-        #self.ui.page_theme.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
-        #self.ui.page_user.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
+        self.ui.page_account.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
+        self.ui.page_info.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
+        self.ui.page_conf.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
+        self.ui.page_domain.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
+        self.ui.page_repo.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
+        self.ui.page_theme.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
+        self.ui.page_user.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
         self.ui.stackedWidget.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
         self.ui.top.setStyleSheet("background:#383838;")
         self.ui.top2.setStyleSheet("background:#FFFFFF;border-radius:20px;")
         self.ui.menu.setStyleSheet("background:#FFFFFF;border-radius:20px;")
         self.ui.redos_icon.setStyleSheet("background:#FFFFFF;")
+        self.ui.widget.setStyleSheet("background:#EC080E;border-radius:1px;")
+        self.ui.home.setStyleSheet("background:#FFFFFF;border-radius:20px;")
 
     def showRepo(self):
         self.ui.stackedWidget.setCurrentWidget(self.ui.page_repo)
@@ -127,7 +129,8 @@ class MainWindow:
             f4 = self.ui.inp_admn.text()
             f5 = self.ui.inp_admp.text()
             f = open("dom_data.txt", "w")
-            f.write(f1+'\n'+f2+'\n'+f3+'\n'+f4+'\n'+f5+'\n')
+            #f.write(f1+'\n'+f2+'\n'+f3+'\n'+f4+'\n'+f5+'\n')
+            f = lambda: os.system("sh -c 'Domain.sh {0} {1} {2} {3}'".format(f2,f1,f4,f5))
 
     def send_logs(self):
         if self.ui.send_auto.isChecked() == True:

@@ -6,48 +6,57 @@ from Ui_MainWindow import Ui_MainWindow
 
 class MainWindow:
     def __init__(self):
+        # initialize main window
         self.main_win = QMainWindow()
         self.main_win.setStyleSheet("background:#E5E5E5;")
-
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self.main_win)
 
+        # initialize stacked widget
         self.ui.stackedWidget.setCurrentWidget(self.ui.home)
         self.ui.stackedWidget.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
 
+        # add event to autostart button
         self.ui.autostart.toggled.connect(self.click_auto)
 
+        # add event to domain button
         self.ui.click_domain.clicked.connect(self.showDomain)
         self.ui.click_domain.setStyleSheet("background:#C4C4C4;border:solid;")
         self.ui.save_domain.clicked.connect(self.save_dom)
 
+        # add event to repository button
         self.ui.click_repo.clicked.connect(self.showRepo)
         self.ui.click_repo.setStyleSheet("background:#C4C4C4;border:solid;")
         self.ui.repo_choose_file.clicked.connect(self.upload_liscence)
 
+        # add event to choose theme button
         self.ui.click_theme.clicked.connect(self.showTheme)
         self.ui.click_theme.setStyleSheet("background:#C4C4C4;border:solid;")
         self.ui.theme_btn.clicked.connect(lambda: os.system("sh -c 'mate-appearance-properties'"))
 
+        # add event to confidentiality button
         self.ui.click_conf.clicked.connect(self.showConf)
         self.ui.click_conf.setStyleSheet("background:#C4C4C4;border:solid;")
         self.ui.check_geo.toggled.connect(self.click_geo)
         self.ui.send_auto.toggled.connect(self.send_logs)
         self.ui.send_not.toggled.connect(self.send_logs)
 
+        # add event to online accounts button
         self.ui.click_account.clicked.connect(self.showAccount)
         self.ui.click_account.setStyleSheet("background:#C4C4C4;border:solid;")
         self.ui.gnome_account.clicked.connect(lambda: os.system("sh -c 'gnome-control-center online-accounts'"))
 
+        # add event to user information button
         self.ui.click_user.clicked.connect(self.showUser)
         self.ui.click_user.setStyleSheet("background:#C4C4C4;border:solid;")
         self.ui.gnome_user.clicked.connect(lambda: os.system("sh -c 'gnome-control-center user-accounts'"))
         self.ui.gnome_special.clicked.connect(lambda: os.system("sh -c 'gnome-control-center universal-access'"))
 
+        # add event to company information button
         self.ui.click_info.clicked.connect(self.showInfo)
         self.ui.click_info.setStyleSheet("background:#C4C4C4;border:solid;")
 
-
+        # change styles of pages on stacked widget
         self.ui.page_account.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
         self.ui.page_info.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
         self.ui.page_conf.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
@@ -56,6 +65,7 @@ class MainWindow:
         self.ui.page_theme.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
         self.ui.page_user.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
 
+        # change styles of bars amd menus
         self.ui.top.setStyleSheet("background:#383838;")
         self.ui.top2.setStyleSheet("background:#FFFFFF;border-radius:20px;")
         self.ui.menu.setStyleSheet("background:#FFFFFF;border-radius:20px;")

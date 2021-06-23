@@ -17,7 +17,7 @@ class MainWindow:
         self.ui.stackedWidget.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
 
         # add event to autostart button
-        self.ui.autostart.toggled.connect(self.click_auto)
+        self.ui.autostart.toggled.connect(self.send_io)
 
         # add event to domain button
         self.ui.click_domain.clicked.connect(self.change_page)
@@ -37,7 +37,7 @@ class MainWindow:
         # add event to confidentiality button
         self.ui.click_conf.clicked.connect(self.change_page)
         self.ui.click_conf.setStyleSheet("background:#C4C4C4;border:solid;")
-        self.ui.check_geo.toggled.connect(self.click_geo)
+        self.ui.check_geo.toggled.connect(self.send_io)
         self.ui.send_auto.toggled.connect(self.send_logs)
         self.ui.send_not.toggled.connect(self.send_logs)
 
@@ -81,18 +81,11 @@ class MainWindow:
 
         self.ui.stackedWidget.setCurrentWidget(eval(page_ref))
 
-    def click_auto(self):
-        if self.ui.autostart.isChecked() == True:
-            param = 1
-            out = lambda: os.system('./Autoload.sh {0}'.format(param))
-            out()
-        else:
-            param = 0
-            out = lambda: os.system('./Autoload.sh {0}'.format(param))
-            out()
+    def send_io(self):
+        btn = QWidget().sender().objectName()
+        obj = 'self.ui.' + btn + '.isChecked()'
 
-    def click_geo(self):
-        if self.ui.check_geo.isChecked() == True:
+        if eval(obj) == True:
             param = 1
             out = lambda: os.system('./Location.sh {0}'.format(param))
             out()

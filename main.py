@@ -20,40 +20,40 @@ class MainWindow:
         self.ui.autostart.toggled.connect(self.click_auto)
 
         # add event to domain button
-        self.ui.click_domain.clicked.connect(self.showDomain)
+        self.ui.click_domain.clicked.connect(self.change_page)
         self.ui.click_domain.setStyleSheet("background:#C4C4C4;border:solid;")
         self.ui.save_domain.clicked.connect(self.save_dom)
 
         # add event to repository button
-        self.ui.click_repo.clicked.connect(self.showRepo)
+        self.ui.click_repo.clicked.connect(self.change_page)
         self.ui.click_repo.setStyleSheet("background:#C4C4C4;border:solid;")
         self.ui.repo_choose_file.clicked.connect(self.upload_liscence)
 
         # add event to choose theme button
-        self.ui.click_theme.clicked.connect(self.showTheme)
+        self.ui.click_theme.clicked.connect(self.change_page)
         self.ui.click_theme.setStyleSheet("background:#C4C4C4;border:solid;")
         self.ui.theme_btn.clicked.connect(lambda: os.system("sh -c 'mate-appearance-properties'"))
 
         # add event to confidentiality button
-        self.ui.click_conf.clicked.connect(self.showConf)
+        self.ui.click_conf.clicked.connect(self.change_page)
         self.ui.click_conf.setStyleSheet("background:#C4C4C4;border:solid;")
         self.ui.check_geo.toggled.connect(self.click_geo)
         self.ui.send_auto.toggled.connect(self.send_logs)
         self.ui.send_not.toggled.connect(self.send_logs)
 
         # add event to online accounts button
-        self.ui.click_account.clicked.connect(self.showAccount)
+        self.ui.click_account.clicked.connect(self.change_page)
         self.ui.click_account.setStyleSheet("background:#C4C4C4;border:solid;")
         self.ui.gnome_account.clicked.connect(lambda: os.system("sh -c 'gnome-control-center online-accounts'"))
 
         # add event to user information button
-        self.ui.click_user.clicked.connect(self.showUser)
+        self.ui.click_user.clicked.connect(self.change_page)
         self.ui.click_user.setStyleSheet("background:#C4C4C4;border:solid;")
         self.ui.gnome_user.clicked.connect(lambda: os.system("sh -c 'gnome-control-center user-accounts'"))
         self.ui.gnome_special.clicked.connect(lambda: os.system("sh -c 'gnome-control-center universal-access'"))
 
         # add event to company information button
-        self.ui.click_info.clicked.connect(self.showInfo)
+        self.ui.click_info.clicked.connect(self.change_page)
         self.ui.click_info.setStyleSheet("background:#C4C4C4;border:solid;")
 
         # change styles of pages on stacked widget
@@ -74,26 +74,12 @@ class MainWindow:
         self.ui.home.setStyleSheet("background:#FFFFFF;border-radius:20px;")
 
 
-    def showRepo(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.page_repo)
+    def change_page(self):
+        page = QWidget().sender().objectName()
+        page = page.replace('click', 'page')
+        page_ref = 'self.ui.' + str(page)
 
-    def showDomain(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.page_domain)
-
-    def showTheme(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.page_theme)
-
-    def showConf(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.page_conf)
-
-    def showAccount(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.page_account)
-
-    def showUser(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.page_user)
-
-    def showInfo(self):
-        self.ui.stackedWidget.setCurrentWidget(self.ui.page_info)
+        self.ui.stackedWidget.setCurrentWidget(eval(page_ref))
 
     def click_auto(self):
         if self.ui.autostart.isChecked() == True:

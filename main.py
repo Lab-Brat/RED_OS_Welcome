@@ -83,16 +83,16 @@ class MainWindow:
 
     def send_io(self):
         btn = QWidget().sender().objectName()
-        obj = 'self.ui.' + btn + '.isChecked()'
+        if btn == 'check_geo':
+            scrpt = './Location.sh '
+        elif btn == 'autostart':
+            scrpt = './Autoload.sh '
+        btn_status = 'self.ui.' + btn + '.isChecked()'
 
-        if eval(obj) == True:
-            param = 1
-            out = lambda: os.system('./Location.sh {0}'.format(param))
-            out()
-        else:
-            param = 0
-            out = lambda: os.system('./Location.sh {0}'.format(param))
-            out()
+        if eval(btn_status) == True: param = 1
+        else: param = 0
+        out = lambda: os.system(scrpt+str(param))
+        out()
 
     def upload_liscence(self):
         file_filter = 'Certificate (*.crt);; Any (*)'

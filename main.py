@@ -118,12 +118,11 @@ class MainWindow:
     def send_logs(self):
         if self.ui.send_auto.isChecked() == True:
             log_mode = 'auto'
-
+            os.system('cat /var/log/syslog | grep error > systemreport.txt')
         elif self.ui.send_not.isChecked() == True:
             log_mode = 'none'
         else:
             log_mode = 'no entry'
-
 
     def show(self):
         self.main_win.show()

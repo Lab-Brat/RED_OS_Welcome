@@ -56,6 +56,15 @@ class MainWindow:
         self.ui.click_info.clicked.connect(self.change_page)
         self.ui.click_info.setStyleSheet("background:#C4C4C4;border:solid;")
 
+        self.ui.repo_choose_file.setStyleSheet("background:#C4C4C4;border:solid;")
+        self.ui.repo_upload.setStyleSheet("background:#C4C4C4;border:solid;")
+
+        self.ui.inp_admn.setStyleSheet("background:#C4C4C4;border:solid;")
+        self.ui.inp_admp.setStyleSheet("background:#C4C4C4;border:solid;")
+        self.ui.inp_comp_name.setStyleSheet("background:#C4C4C4;border:solid;")
+        self.ui.inp_dn.setStyleSheet("background:#C4C4C4;border:solid;")
+        self.ui.inp_dip.setStyleSheet("background:#C4C4C4;border:solid;")
+
         # change styles of pages on stacked widget
         self.ui.page_account.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
         self.ui.page_info.setStyleSheet("background:#FFFFFF;border:solid;border-radius:20px;")
@@ -91,8 +100,9 @@ class MainWindow:
 
         if eval(btn_status) == True: param = 1
         else: param = 0
-        out = lambda: os.system(scrpt+str(param))
-        out()
+        print((scrpt+str(param)))
+        # out = lambda: os.system(scrpt+str(param))
+        # out()
 
     def upload_liscence(self):
         file_filter = 'Certificate (*.crt);; Any (*)'

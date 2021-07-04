@@ -104,9 +104,9 @@ class MainWindow:
 
         if eval(btn_status) == True: param = 1
         else: param = 0
-        print((scrpt+str(param)))
-        # out = lambda: os.system(scrpt+str(param))
-        # out()
+        # print((scrpt+str(param)))
+        out = lambda: os.system(scrpt+str(param))
+        out()
 
     def upload_liscence(self):
         file_filter = 'Certificate (*.crt);; Any (*)'

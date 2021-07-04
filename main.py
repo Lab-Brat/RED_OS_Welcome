@@ -3,6 +3,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QWidget
 from qtwidgets import Toggle, AnimatedToggle
 
 from Ui_MainWindow import Ui_MainWindow
+from css_config import CSS_Styles
+
 
 class MainWindow:
     def __init__(self):
@@ -21,7 +23,7 @@ class MainWindow:
 
         # add event to domain button
         self.ui.click_domain.clicked.connect(self.change_page)
-        self.ui.click_domain.setStyleSheet("background:#C4C4C4;border:solid;")
+        # self.ui.click_domain.setStyleSheet("background:#C4C4C4;border:solid;")
         self.ui.save_domain.clicked.connect(self.save_dom)
 
         # add event to repository button
@@ -82,6 +84,8 @@ class MainWindow:
         self.ui.widget.setStyleSheet("background:#EC080E;border-radius:1px;")
         self.ui.home.setStyleSheet("background:#FFFFFF;border-radius:20px;")
 
+        CSS_Styles()
+
 
     def change_page(self):
         page = QWidget().sender().objectName()
@@ -141,5 +145,6 @@ class MainWindow:
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     main_win = MainWindow()
+    # CSS_Styles()
     main_win.show()
     sys.exit(app.exec_())

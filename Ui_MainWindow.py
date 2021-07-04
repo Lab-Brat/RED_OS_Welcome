@@ -12,6 +12,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_MainWindow(object):
+    def __init__(self):
+        self.path_root = '/home/oxxo/Documents/github/RED_OS_Welcome/'
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(860, 640)
@@ -30,7 +33,7 @@ class Ui_MainWindow(object):
         self.redos_icon = QtWidgets.QLabel(self.centralwidget)
         self.redos_icon.setGeometry(QtCore.QRect(23, 30, 120, 50))
         self.redos_icon.setText("")
-        self.redos_icon.setPixmap(QtGui.QPixmap("logo.png"))
+        self.redos_icon.setPixmap(QtGui.QPixmap(self.path_root + "logo.png"))
         self.redos_icon.setScaledContents(True)
         self.redos_icon.setObjectName("redos_icon")
         self.click_domain = QtWidgets.QPushButton(self.centralwidget)
@@ -96,7 +99,7 @@ class Ui_MainWindow(object):
         self.redos_icon_2 = QtWidgets.QLabel(self.home)
         self.redos_icon_2.setGeometry(QtCore.QRect(20, 20, 261, 111))
         self.redos_icon_2.setText("")
-        self.redos_icon_2.setPixmap(QtGui.QPixmap("logo.png"))
+        self.redos_icon_2.setPixmap(QtGui.QPixmap(self.path_root + "logo.png"))
         self.redos_icon_2.setScaledContents(True)
         self.redos_icon_2.setObjectName("redos_icon_2")
         self.label = QtWidgets.QLabel(self.home)

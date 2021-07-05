@@ -97,9 +97,9 @@ class MainWindow:
     def send_io(self):
         btn = QWidget().sender().objectName()
         if btn == 'check_geo':
-            scrpt = './Location.sh '
+            scrpt = './sh/Location.sh '
         elif btn == 'autostart':
-            scrpt = './Autoload.sh '
+            scrpt = './sh/Autoload.sh '
         btn_status = 'self.ui.' + btn + '.isChecked()'
 
         if eval(btn_status) == True: param = 1
@@ -127,7 +127,7 @@ class MainWindow:
             f5 = self.ui.inp_admp.text()
             f = open("dom_data.txt", "w")
             #f.write(f1+'\n'+f2+'\n'+f3+'\n'+f4+'\n'+f5+'\n')
-            f = lambda: os.system("sh -c 'Domain.sh {0} {1} {2} {3}'".format(f2,f1,f4,f5))
+            f = lambda: os.system("sh -c './sh/Domain.sh {0} {1} {2} {3}'".format(f2,f1,f4,f5))
 
     def send_logs(self):
         if self.ui.send_auto.isChecked() == True:

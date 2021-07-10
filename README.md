@@ -11,7 +11,7 @@ GUI программа разработанная для выполнения з
 python3 -m pip install --upgrade pip
 ```
 ```
-pip install pyqt5
+pip install pyqt5 qtwidgets
 ```
 
 

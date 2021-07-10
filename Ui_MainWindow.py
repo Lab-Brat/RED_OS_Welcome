@@ -9,13 +9,16 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import os
 
 
 class Ui_MainWindow(object):
     def __init__(self):
-        self.path_root = '/home/oxxo/Documents/github/RED_OS_Welcome/'
+        self.username = os.getlogin()
+        self.path_root = '/home/' + self.username + '/Documents/github/RED_OS_Welcome/'
 
     def setupUi(self, MainWindow):
+        # print(self.path_root)
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(860, 640)
         MainWindow.setMinimumSize(QtCore.QSize(860, 640))

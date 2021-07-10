@@ -14,6 +14,7 @@ python3 -m pip install --upgrade pip
 pip install pyqt5 qtwidgets
 ```
 
+Чтобы графическое окно правильно отображалось, лучше скачать репозиторий по данному пути: /home/username/Documents/github/RED_OS_Welcome
 
 Запустить GUI можно с:
 ```
